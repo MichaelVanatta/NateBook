@@ -1,2 +1,2 @@
-\## Our repo for PRO150: Web-Based Software Projects
+## Our repo for PRO150: Web-Based Software Projects
 
