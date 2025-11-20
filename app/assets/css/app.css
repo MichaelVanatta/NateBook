@@ -1,0 +1,12 @@
+.nav-bar-container {
+    display: flex;
+    flex: initial;
+    align-items: center;
+    justify-content: center;
+}
+
+.nav-bar {
+    margin: 1.5rem;
+    font-size: larger;
+    align-items: center;
+}
