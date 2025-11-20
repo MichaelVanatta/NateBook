@@ -12,8 +12,20 @@
   background-size: 100% 100%;
 }
 </style>
+
+<script setup>
+
+</script>
+
 <template>
   <div>
     <h1 class="rule">Test rule</h1>
+  </div>
+
+<div>
+    <NuxtRouteAnnouncer />
+    <NuxtLayout>
+      <NuxtPage />
+    </NuxtLayout>
   </div>
 </template>
