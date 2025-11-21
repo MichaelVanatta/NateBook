@@ -7,6 +7,11 @@ export default defineNuxtConfig({
     '@nuxt/eslint',
     '@nuxt/test-utils',
     '@nuxt/fonts',
-    '@nuxt/hints'
-  ]
+    '@nuxt/hints',
+    '@nuxthub/core'
+  ],
+
+  runtimeConfig: {
+    dbapi: process.env.Nuxt_POSTGRES_URL
+  }
 })
