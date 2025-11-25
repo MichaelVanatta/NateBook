@@ -1,6 +1,5 @@
 <!--"npm run dev" to run page-->
 
-
 <template>
   <div class="main_board">
   <header>

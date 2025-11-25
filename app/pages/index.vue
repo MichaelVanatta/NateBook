@@ -5,3 +5,5 @@
 </template>
 
 <style src="assets/css/app.css"/>
+<script setup lang="ts">
+</script>

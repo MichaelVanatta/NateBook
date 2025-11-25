@@ -63,3 +63,21 @@ html{
     max-width: 400px;
     position: fixed;
 }
+/*footer {*/
+/*    position: fixed; !* Fix the footer's position relative to the viewport *!*/
+/*    bottom: 0; !* Align to the bottom of the viewport *!*/
+/*    left: 0; !* Align to the left of the viewport *!*/
+/*    width: 100%; !* Make the footer span the full width *!*/
+/*    !* Other footer styles like background-color, padding, z-index if needed *!*/
+/*    z-index: 100; !* Ensure the footer appears above other content *!*/
+/*}*/
+html, main {
+    height: 100%;
+    margin: 0;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
