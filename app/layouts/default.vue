@@ -7,6 +7,11 @@
             <NuxtLink class="nav-bar" to="/messageboard">Board</NuxtLink>
         </nav>
         <slot />
+      <footer>
         <h4>© Copyright 200-2025 Nathan & Nathan Attorneys Agenst Law</h4>
+      </footer>
     </div>
 </template>
+<style src="../assets/css/app.css"/>
+<script setup lang="ts">
+</script>
