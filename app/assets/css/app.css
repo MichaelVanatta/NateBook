@@ -53,9 +53,9 @@ html{
 }
 
 .posting{
-    position: fixed; /* Fix the footer's position relative to the viewport */
-    bottom: 0; /* Align to the bottom of the viewport */
-    z-index: 100; /* Ensure the footer appears above other content */
+    position: fixed;
+    bottom: 0;
+    z-index: 100;
     text-align: center;
     background-position: center center;
     margin: 15px 25%;
