@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Eagle+Lake&display=swap');
+
 .nav-bar-container {
     display: flex;
     flex: initial;
@@ -9,4 +11,55 @@
     margin: 1.5rem;
     font-size: larger;
     align-items: center;
+}
+.rule {
+    font-family: "Eagle Lake", serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 50px;
+    color: red;
+    text-align: center;
+    background-image: url("../img/oldPaper.jpg");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    max-width: 400px;
+    position: fixed;
+
+}
+.main_board {
+    margin: 0;
+    height: 100%;
+    overflow-y: auto;
+    position: relative;
+    padding: 20px;
+}
+html{
+    background-image: url("../img/doom_background.jpg");
+    background-repeat: repeat-y;
+    background-size: 100%;
+    background-position: center center;
+    background-color: #552206;
+}
+.posted {
+    text-align: left;
+    font-size: 35px;
+    background-image: url("../img/posted_paper.png");
+    background-repeat: repeat-y;
+    background-size: 50% 100%;
+    padding: 15px 25%;
+    background-position: center center;
+    overflow-y: auto;
+    position: relative;
+}
+.posting{
+    font-weight: 400;
+    font-style: normal;
+    font-size: 50px;
+    color: red;
+    text-align: center;
+    background-image: url("../img/post_paper.png");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    max-width: 400px;
+    position: fixed;
 }
