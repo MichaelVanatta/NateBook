@@ -81,3 +81,15 @@ main {
     flex-direction: column;
     min-height: 100vh;
 }
+.login_signUp{
+    font-family: "Eagle Lake", serif;
+    text-align: left;
+    font-size: 35px;
+    background-image: url("../img/posted_paper.png");
+    background-repeat: repeat-y;
+    background-size: 50% 100%;
+    padding: 15px 25%;
+    background-position: center center;
+    overflow: auto;
+    position: relative;
+}
