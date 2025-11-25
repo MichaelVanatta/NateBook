@@ -43,10 +43,7 @@
     test
   </p>
   </div>
-  <footer>
     <p class="posting">    Here is a concise post crafted to be exactly two hundred characters long, giving you a clear, simple message that is useful, readable, and neatly contained within the limit Enjoy this extra note here!  </p>
-
-  </footer>
   </div>
 </template>
 <script setup lang="ts">
