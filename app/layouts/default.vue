@@ -8,7 +8,7 @@
         </nav>
         <slot />
       <footer>
-        <h4>© Copyright 200-2025 Nathan & Nathan Attorneys Agenst Law</h4>
+        <h4 style="color: white">© Copyright 200-2025 Nathan & Nathan Attorneys Agenst Law</h4>
       </footer>
     </div>
 </template>

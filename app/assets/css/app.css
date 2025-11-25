@@ -51,15 +51,33 @@ html{
     overflow-y: auto;
     position: relative;
 }
+
 .posting{
+    position: fixed;
+    bottom: 0;
+    z-index: 100;
+    text-align: center;
+    background-position: center center;
+    margin: 15px 25%;
+    padding: 15px;
+    background-image: url("../img/posted_paper.png");
+    background-repeat: no-repeat;
     font-weight: 400;
     font-style: normal;
-    font-size: 50px;
-    color: red;
-    text-align: center;
-    background-image: url("../img/post_paper.png");
-    background-repeat: no-repeat;
+    font-size: 35px;
     background-size: 100% 100%;
-    max-width: 400px;
-    position: fixed;
+    border: 5px solid white;
+    display: flex;
+    align-items: center;
+    border-radius: 15px;
+}
+html, main {
+    height: 100%;
+    margin: 0;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
