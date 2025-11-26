@@ -5,12 +5,24 @@
     flex: initial;
     align-items: center;
     justify-content: center;
+    background-image: url("../img/wood.jpg");
+    background-repeat: no-repeat;
+    background-size: 50% 100%;
+    background-position: center center;
+
 }
 
 .nav-bar {
     margin: 1.5rem;
-    font-size: larger;
+    font-size: 25px;
     align-items: center;
+    color: white;
+    font-family: "Eagle Lake", serif;
+
+}
+.nav-bar:hover {
+    color: black;
+    font-style: italic;
 }
 .rule {
     font-family: "Eagle Lake", serif;
@@ -27,11 +39,12 @@
 
 }
 .main_board {
-    margin: 0;
     height: 100%;
     overflow-y: auto;
     position: relative;
     padding: 20px;
+    margin-bottom: 200px;
+
 }
 html{
     background-image: url("../img/doom_background.jpg");
@@ -80,4 +93,38 @@ main {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+}
+.login_signUp{
+    font-family: "Eagle Lake", serif;
+    text-align: center;
+    font-size: 35px;
+    background-image: url("../img/posted_paper.png");
+    background-repeat: repeat-y;
+    background-size: 50% 100%;
+    padding: 15px 25%;
+    background-position: center center;
+    overflow: auto;
+    position: relative;
+}
+input[type=text], input[type=password] {
+    padding: 15px;
+    margin: 5px 0 22px 0;
+    display: inline-block;
+    background-position: center center;
+    background-image: url("../img/posted_paper.png");
+    border: 5px solid white;
+    align-items: center;
+    border-radius: 15px;
+
+}
+
+button{
+    font-family: "Eagle Lake", serif;
+    font-weight: 400;
+    background-image: url("../img/wood.jpg");
+    color: white;
+    font-size: 30px;
+    margin: 10px;
+    border: 3px solid black;
+    border-radius: 15px;
 }

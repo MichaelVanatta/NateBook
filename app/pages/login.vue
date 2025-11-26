@@ -1,15 +1,28 @@
+    
 <template>
-    <main>
-        <label>Username: </label><br/>
-        <input v-model="username" placeholder="Username"><br/>
+<main class="login_signUp">
+      <form action="action_page.php" >
+        <div class="container">
+          <h1>Login Now</h1>
 
-        <label>Password: </label><br/>
-        <input v-model="password" placeholder="Password"><br/>
 
-        <button @click="displayInfo">Submit</button>
+          <label for="name"><b>UserName</b></label> <br>
+          <input v-model="username" placeholder="Enter UserName" name="name" required> <br>
+
+
+          <label for="psw-repeat"><b> Password</b></label> <br>
+          <input v-model="password" placeholder="Enter Password" name="psw" required>
+
+          <div class="clearfix">
+            <button type="button" class="cancelbtn">Cancel</button>
+            <button type="submit" class="loginbtn">login</button>
+            <button @click="displayInfo">Submit</button>
 
         <p>{{ info }}</p>
-    </main>
+          </div>
+        </div>
+      </form>
+</main>
 </template>
 
 
