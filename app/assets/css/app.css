@@ -5,12 +5,24 @@
     flex: initial;
     align-items: center;
     justify-content: center;
+    background-image: url("../img/wood.jpg");
+    background-repeat: no-repeat;
+    background-size: 50% 100%;
+    background-position: center center;
+
 }
 
 .nav-bar {
     margin: 1.5rem;
-    font-size: larger;
+    font-size: 25px;
     align-items: center;
+    color: white;
+    font-family: "Eagle Lake", serif;
+
+}
+.nav-bar:hover {
+    color: black;
+    font-style: italic;
 }
 .rule {
     font-family: "Eagle Lake", serif;
