@@ -6,24 +6,28 @@
         <label>Password: </label><br/>
         <input v-model="password" placeholder="Password"><br/>
 
-        <button @click="displayInfo">Submit</button>
-
-        <p>{{ info }}</p>
+        <button @click="checkAccount">Submit</button>
     </main>
 </template>
 
 
 <script setup lang="ts">
 import {ref} from "vue";
-    const {data} = await useFetch('/api/db');
+    
     var username: string;
     var password: string;
-    const info = ref('No Account');
 
-    function displayInfo(): void{
-        console.log("Username: " + username + " || Password: " + password)
-        info.value = "Username: " + username + " || Password: " + password
-        console.log(info)
+    async function checkAccount() {
+        const user: any = await $fetch('api/checkaccount', {
+            method: 'POST',
+            body: {
+                username: username,
+                password: password
+            }
+
+            
+        })
+        console.log(user.user)
     }
 </script>
 
