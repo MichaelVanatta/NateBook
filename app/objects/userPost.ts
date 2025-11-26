@@ -1,4 +1,4 @@
-class User {
+export class User {
     id: number;
     username: string;
     nameColor: string;
@@ -18,7 +18,7 @@ class User {
     }
 }
 
-class Post {
+export class Post {
     text: string;
     userId: number;
 

@@ -43,8 +43,23 @@
     test
   </p>
   </div>
-    <p class="posting">    Here is a concise post crafted to be exactly two hundred characters long, giving you a clear, simple message that is useful, readable, and neatly contained within the limit Enjoy this extra note here!  </p>
+  <footer>
+    <p name="input" class="posting">
+      Here is a concise post crafted to be exactly two hundred characters long, giving you a clear, simple message that is useful, readable, and neatly contained within the limit Enjoy this extra note here!
+    </p>
+    <UButton icon="send-button.png" loading-auto @click="readInput" />
+  </footer>
   </div>
 </template>
 <script setup lang="ts">
+import { ref } from 'vue'
+import {User} from "../objects/userPost"
+const users = ref<User[]>([])
+//read from database
+
+
+
+async function readInput() {
+
+}
 </script>
