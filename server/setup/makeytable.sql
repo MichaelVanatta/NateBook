@@ -1,0 +1,14 @@
+DROP TABLE IF EXISTS users;
+DROP TABLE IF EXISTS posts;
+
+CREATE TABLE IF NOT EXISTS users (
+    "user_id" SERIAL NOT NULL PRIMARY KEY,
+    "username" VARCHAR(32) NOT NULL,
+    "password" VARCHAR(32) NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS posts (
+    "post_id" SERIAL NOT NULL PRIMARY KEY,
+    "user_id" INT NOT NULL REFERENCES users(user_id),
+    "text" VARCHAR(200) NOT NULL
+);
