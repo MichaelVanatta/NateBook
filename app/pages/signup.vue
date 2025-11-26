@@ -17,7 +17,6 @@
 
 <template>
     <main class="login_signUp">
-      <form action="action_page.php" >
         <div class="container">
           <h1>Sign Up Now</h1>
           <p>Fill in this form to join the board.</p>
@@ -33,10 +32,9 @@
           <div class="clearfix">
             <button type="button" class="cancelbtn">Cancel</button>
             <button type="submit" class="signupbtn">Sign Up</button>
-                    <button @click="createUser">Go</button>
+            <button @click="createUser">Go</button>
 
           </div>
         </div>
-      </form>
-   
+    </main>
 </template>
