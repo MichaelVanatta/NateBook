@@ -5,7 +5,7 @@ import {ref} from "vue";
     var password: string;
 
     async function checkAccount() {
-        const user: any = await $fetch('api/checkaccount', {
+        const user: any = await $fetch('utils/checkaccount', {
             method: 'POST',
             body: {
                 username: username,
