@@ -44,18 +44,18 @@
     </p>
     </div>
     <footer>
-      <input name="input" class="posting" placeholder="Add your post following the RULE">
+      <!--<input name="input" class="posting" placeholder="Add your post following the RULE">
         Here is a concise post crafted to be exactly two hundred characters long, giving you a clear, simple message that is useful, readable, and neatly contained within the limit Enjoy this extra note here!
-      </input>
-      <UButton icon="send-button.png" loading-auto @click="readInput" />
+      </input>-->
+      <UButton icon="send-button.png" loading-auto @click="addPost" />
     </footer>
     </div>
   </template>
   <script setup lang="ts">
-  import {User} from "../objects/userPost"
-  import {Post} from "../objects/userPost"
+  import {User} from "../objects/userMessage"
+  import {Message} from "../objects/userMessage"
   const users: User[] = []
-  const posts: Post[] = []
+  const messages: Message[] = []
   //read from database
 
   let text: string = "";
@@ -64,14 +64,15 @@
 
   users.push(u)
 
-posts.forEach(element => {
+messages.forEach(element => {
     const newPost = document.createElement('p');
     var name = users.find(x => x.id == element.userId)?.username
     newPost.textContent = name + element.text
 });
 
-async function readInput() {
-var post: Post = new Post(text, u.id)
-posts.push(post)
+async function addPost() {
+
+//var message: Message = u.addPost(Id, text)
+//messages.push(message)
 }
 </script>

@@ -2,7 +2,7 @@ export class User {
     id: number;
     username: string;
     nameColor: string;
-    posts: Post[] = [];
+    messages: Message[] = [];
 
     // Constructor to initialize the properties when a new instance is created
     constructor(id: number, username: string, nameColor: string) {
@@ -12,18 +12,23 @@ export class User {
     }
 
     // Method to define behavior
-    addPost(text: string): void {
+    addPost(messageId: number, text: string): Message {
         console.log(`User ${this.id} posted Message: \n${text}`);
-        this.posts.push(new Post(text, this.id));
+        var m = new Message(messageId, text, this.id);
+        this.messages.push(m);
+
+        return m;
     }
 }
 
-export class Post {
+export class Message {
+    id: number;
     text: string;
     userId: number;
 
     // Constructor to initialize the properties when a new instance is created
-    constructor(text: string, userId: number) {
+    constructor(id: number, text: string, userId: number) {
+        this.id = id;
         this.text = text;
         this.userId = userId;
     }
