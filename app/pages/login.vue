@@ -1,19 +1,26 @@
 <script setup lang="ts">
-import {ref} from "vue";
+    const user = reactive({
+        username: "",
+        password: ""
+    })
     
-    var username: string;
-    var password: string;
-
-    async function checkAccount() {
-        const user: any = await $fetch('api/checkaccount', {
+    async function checkAccount(username: string, password: string) {
+        return await $fetch('api/checkaccount', {
             method: 'POST',
             body: {
                 username: username,
                 password: password
             }
         })
-        console.log(user.user)
     }
+
+    async function handleSubmit(){
+        const res:any = await checkAccount(user.username, user.password);
+        console.log(res.user)
+        user.username = "";
+        user.password = "";
+    }
+
 </script>
     
 <template>
@@ -22,17 +29,16 @@ import {ref} from "vue";
         <h1>Login Now</h1>
 
 
-        <label for="name"><b>Username</b></label> <br>
-        <input v-model="username" placeholder="Enter UserName" name="name" required> <br>
+        <label for="name"><b>UserName</b></label> <br>
+        <input v-model="user.username" placeholder="Enter UserName" name="name" required> <br>
 
 
         <label for="psw-repeat"><b> Password</b></label> <br>
-        <input v-model="password" placeholder="Enter Password" name="psw" required>
+        <input v-model="user.password" placeholder="Enter Password" name="psw" required>
 
         <div class="clearfix">
             <button type="button" class="cancelbtn">Cancel</button>
-            <button type="submit" class="loginbtn" @click="checkAccount">login</button>
-            <!-- <button @click="displayInfo">Submit</button> -->
+            <button type="submit" class="loginbtn" @click="handleSubmit">Login</button>
         </div>
     </div>
 </main>
