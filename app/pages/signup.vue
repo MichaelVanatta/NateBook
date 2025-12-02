@@ -1,17 +1,24 @@
 <script setup lang="ts">
-    let username: string = "";
-    let password: string = "";
+    const user = reactive({
+        username: '',
+        password: '',
+    })
 
-    async function createUser() {
-        const res = await $fetch('api/createuser', {
+    async function createUser(username: string, password: string) {
+        return await $fetch('api/createuser', {
             method: 'POST',
             body: {
-            username: username,
-            password: password,
-            },
-        })
-        username = "";
-        password = "";
+                username: username,
+                password: password,
+            }
+        });
+    }
+
+    async function handleSubmit() {
+        const res:any = await createUser(user.username, user.password);
+        console.log(res.user);
+        user.username = '';
+        user.password = '';
     }
 </script>
 
@@ -23,17 +30,16 @@
           <hr>
 
           <label for="name"><b>UserName</b></label> <br>
-          <input v-model="username" placeholder="Enter UserName" name="name" required> <br>
+          <input v-model="user.username" placeholder="Enter UserName" name="name" required> <br>
 
 
           <label for="psw-repeat"><b> Password</b></label> <br>
-          <input v-model="password" placeholder="Enter Password" name="psw" required>
+          <input v-model="user.password" placeholder="Enter Password" name="psw" required>
 
           <div class="clearfix">
             <button type="button" class="cancelbtn">Cancel</button>
             <button type="submit" class="signupbtn">Sign Up</button>
-            <button @click="createUser">Go</button>
-
+            <button @click="handleSubmit">Go</button>
           </div>
         </div>
     </main>
