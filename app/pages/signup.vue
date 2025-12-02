@@ -3,7 +3,7 @@
     let password: string = "";
 
     async function createUser() {
-        const res = await $fetch('utils/createuser', {
+        const res = await $fetch('api/createuser', {
             method: 'POST',
             body: {
             username: username,
@@ -25,15 +25,12 @@
           <label for="name"><b>UserName</b></label> <br>
           <input v-model="username" placeholder="Enter UserName" name="name" required> <br>
 
-
           <label for="psw-repeat"><b> Password</b></label> <br>
           <input v-model="password" placeholder="Enter Password" name="psw" required>
 
           <div class="clearfix">
             <button type="button" class="cancelbtn">Cancel</button>
-            <button type="submit" class="signupbtn">Sign Up</button>
-            <button @click="createUser">Go</button>
-
+            <button @click="createUser">Sign Up</button>
           </div>
         </div>
     </main>

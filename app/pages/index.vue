@@ -1,14 +1,10 @@
 <script setup lang="ts">
-    const {data} = await useFetch('/api/db');
-    import { selectRandomRule } from '~~/server/utils/selectrule';
-    const rule = selectRandomRule();
+
 </script>
 
 <template>
     <main>
         Hog Tuah
-        <!-- {{ data }} -->
-        {{ rule }}
     </main>
 </template>
 
