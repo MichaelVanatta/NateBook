@@ -38,8 +38,7 @@
 
           <div class="clearfix">
             <button type="button" class="cancelbtn">Cancel</button>
-            <button type="submit" class="signupbtn">Sign Up</button>
-            <button @click="handleSubmit">Go</button>
+            <button type="button" class="signupbtn" @click="handleSubmit()">Sign Up</button>
           </div>
         </div>
     </main>
