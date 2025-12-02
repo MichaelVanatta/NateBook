@@ -3,7 +3,7 @@
     let password: string = "";
 
     async function createUser() {
-        const res = await $fetch('api/createuser', {
+        const res = await $fetch('utils/createuser', {
             method: 'POST',
             body: {
             username: username,
