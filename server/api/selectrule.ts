@@ -24,12 +24,3 @@ export function selectRandomRule(): any{
     }
     return rule;
 }
-
-// function getRandomInt(min: number, max: number): number {
-//   min = Math.ceil(min); // Ensure min is an integer
-//   max = Math.floor(max); // Ensure max is an integer
-//   return Math.floor(Math.random() * (max - min + 1)) + min;
-// }
-
-// const randomInteger: number = getRandomInt(1, 10); // Generates a random integer between 1 and 10
-// console.log(randomInteger); // e.g., 5

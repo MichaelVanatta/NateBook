@@ -14,7 +14,7 @@ export default defineEventHandler(async (event) => {
 
   const body = await readBody(event);
   const result = await client.query(`SELECT * FROM users WHERE username = '${body.username}' and password = '${body.password}'`);
-  console.log(result);
+  console.log(result.rows);
 
   await client.end();
 
