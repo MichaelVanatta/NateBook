@@ -2,7 +2,7 @@
     const user = reactive({
         username: '',
         password: '',
-    })
+    });
 
     async function createUser(username: string, password: string) {
         return await $fetch('api/createuser', {
@@ -29,16 +29,16 @@
           <p>Fill in this form to join the board.</p>
           <hr>
 
-          <label for="name"><b>UserName</b></label> <br>
+          <label for="name"><b>Username</b></label> <br>
           <input v-model="user.username" placeholder="Enter UserName" name="name" required> <br>
 
 
-          <label for="psw-repeat"><b> Password</b></label> <br>
+          <label for="psw-repeat"><b>Password</b></label> <br>
           <input v-model="user.password" placeholder="Enter Password" name="psw" required>
 
           <div class="clearfix">
             <button type="button" class="cancelbtn">Cancel</button>
-            <button type="button" class="signupbtn" @click="handleSubmit()">Sign Up</button>
+            <button type="button" class="signupbtn" @click="handleSubmit">Sign Up</button>
           </div>
         </div>
     </main>

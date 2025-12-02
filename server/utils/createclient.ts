@@ -1,6 +1,7 @@
 import { Client } from "pg";
 
-export default new Client({
+  export async function createClient(): Promise<Client> {
+    return new Client({
     user: "postgres",
     password: "nathanandnathan",
     host: "localhost",
@@ -8,3 +9,4 @@ export default new Client({
     database: "postgres",
     ssl: false,
   });
+}

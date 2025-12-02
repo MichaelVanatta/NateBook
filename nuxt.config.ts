@@ -9,7 +9,6 @@ export default defineNuxtConfig({
     '@nuxt/fonts',
     '@nuxt/hints',
     '@nuxthub/core',
-    '@nuxt/ui'
   ],
 
   runtimeConfig: {
