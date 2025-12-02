@@ -5,7 +5,7 @@ import {ref} from "vue";
     var password: string;
 
     async function checkAccount() {
-        const user: any = await $fetch('utils/checkaccount', {
+        const user: any = await $fetch('api/checkaccount', {
             method: 'POST',
             body: {
                 username: username,
@@ -22,7 +22,7 @@ import {ref} from "vue";
         <h1>Login Now</h1>
 
 
-        <label for="name"><b>UserName</b></label> <br>
+        <label for="name"><b>Username</b></label> <br>
         <input v-model="username" placeholder="Enter UserName" name="name" required> <br>
 
 

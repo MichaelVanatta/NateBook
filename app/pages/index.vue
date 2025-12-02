@@ -1,6 +1,6 @@
 <script setup lang="ts">
     const {data} = await useFetch('/api/db');
-    import { selectRandomRule } from '~~/server/utils/selectrule';
+    import { selectRandomRule } from '~~/server/api/selectrule';
     const rule = selectRandomRule();
 </script>
 
