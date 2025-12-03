@@ -8,10 +8,11 @@ export async function genericPost(
 ) {
   await client.connect();
   console.log(body);
-  await client.query(query);
+  const result = await client.query(query);
   await client.end();
   return {
-    status: "ok",
+    status: 'ok',
     user: body,
+    result: result,
   };
 }
