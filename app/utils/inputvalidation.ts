@@ -1,4 +1,4 @@
-import type { user, userRes } from '../../types/natebooktypes';
+import type { userRes } from '../../types/natebooktypes';
 
 export function validateUserValues(username: string, password: string): number {
     if (!username) {
@@ -11,7 +11,7 @@ export function validateUserValues(username: string, password: string): number {
 }
 
 export async function validateUserNotExists(username: string, password: string): Promise<boolean> {
-    const res: userRes = await $fetch('api/checkaccount', {
+    const res: userRes = await $fetch('api/finduser', {
         method: 'POST',
         body: {
             username: username,
