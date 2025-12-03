@@ -4,7 +4,7 @@ DROP TABLE IF EXISTS posts CASCADE;
 CREATE TABLE IF NOT EXISTS users (
     "user_id" SERIAL NOT NULL PRIMARY KEY,
     "username" VARCHAR(32) NOT NULL,
-    "password" VARCHAR(32) NOT NULL
+    "password" VARCHAR(32) NOT NULL,
     "name_color" VARCHAR(32) NULL
 );
 
