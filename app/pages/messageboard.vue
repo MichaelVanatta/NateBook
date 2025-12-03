@@ -3,45 +3,45 @@
 <template>
   <div class="main_board">
     <header>
-      <h1 class="rule"> Test rule Test rule Test rule Test rule Test rule Test rule Test rule Test rule Test rule Test rule Test rule</h1>
+      <h1 class="rule"> {{ rule }} </h1>
     </header>
     <div>
-    <p class="posted">
-      Here is a concise post crafted to be exactly two hundred characters long, giving you a clear, simple message that is useful, readable, and neatly contained within the limit Enjoy this extra note here!  </p>
-    <p class="posted">
-      test
-    </p>
-    <p class="posted">
-      test
-    </p><p class="posted">
-      test
-    </p>
-    <p class="posted">
-      test
-    </p>
-    <p class="posted">
-      test
-    </p><p class="posted">
-      test
-    </p><p class="posted">
-      test
-    </p><p class="posted">
-      test
-    </p><p class="posted">
-      test
-    </p><p class="posted">
-      test
-    </p><p class="posted">
-      test
-    </p><p class="posted">
-      test
-    </p><p class="posted">
-      test
-    </p><p class="posted">
-      test
-    </p><p class="posted">
-      test
-    </p>
+      <p class="posted">
+        Here is a concise post crafted to be exactly two hundred characters long, giving you a clear, simple message that is useful, readable, and neatly contained within the limit Enjoy this extra note here!  </p>
+      <p class="posted">
+        test
+      </p>
+      <p class="posted">
+        test
+      </p><p class="posted">
+        test
+      </p>
+      <p class="posted">
+        test
+      </p>
+      <p class="posted">
+        test
+      </p><p class="posted">
+        test
+      </p><p class="posted">
+        test
+      </p><p class="posted">
+        test
+      </p><p class="posted">
+        test
+      </p><p class="posted">
+        test
+      </p><p class="posted">
+        test
+      </p><p class="posted">
+        test
+      </p><p class="posted">
+        test
+      </p><p class="posted">
+        test
+      </p><p class="posted">
+        test
+      </p>
     </div>
     <footer>
       <!--<input name="input" class="posting" placeholder="Add your post following the RULE">
@@ -49,9 +49,12 @@
       </input>-->
       <UButton icon="send-button.png" loading-auto @click="addPost" />
     </footer>
-    </div>
-  </template>
-  <script setup lang="ts">
+  </div>
+</template>
+<script setup lang="ts">
+  import { selectRandomRule } from '~~/server/api/selectrule';
+  const rule = selectRandomRule();
+
   import {User} from "../objects/userMessage"
   import {Message} from "../objects/userMessage"
   const users: User[] = []
@@ -68,7 +71,7 @@ messages.forEach(element => {
     const newPost = document.createElement('p');
     var name = users.find(x => x.id == element.userId)?.username
     newPost.textContent = name + element.text
-});
+  });
 
 async function addPost() {
 

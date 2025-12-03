@@ -128,3 +128,12 @@ button{
     border: 3px solid black;
     border-radius: 15px;
 }
+.putin{
+    font-weight: 400;
+    background-image: url("../img/wood.jpg");
+    color: white;
+    font-size: 30px;
+    margin: 10px;
+    border: 3px solid black;
+    border-radius: 15px;
+}
