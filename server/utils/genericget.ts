@@ -1,18 +1,12 @@
 import type pg from 'pg';
 import type { user } from '../../types/natebooktypes';
 
-export async function genericPost(
-  client: pg.Client,
-  body: user,
-  query: string,
-) {
+export async function genericGet(client: pg.Client, query: string) {
   await client.connect();
-  console.log(body);
   const result = await client.query(query);
   await client.end();
   return {
     status: 'ok',
-    user: body,
     result: result,
   };
 }
