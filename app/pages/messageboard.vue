@@ -28,17 +28,6 @@
             <p class="posted">test</p>
             <p class="posted">test</p>
         </div>
-        <footer>
-            <input
-                name="input"
-                class="posting"
-                placeholder="Add your post. Make sure it follows the only rule."
-            />
-            Here is a concise post crafted to be exactly two hundred characters
-            long, giving you a clear, simple message that is useful, readable,
-            and neatly contained within the limit Enjoy this extra note here!
-            <button icon="send-button.png" loading-auto @click="readInput" />
-        </footer>
     </div>
     <div>
         <footer>

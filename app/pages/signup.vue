@@ -48,14 +48,6 @@ async function handleSubmit() {
           <label for="name"><b>Username</b></label> <br>
           <input class="putin" v-model="user.username" placeholder="Enter UserName" name="name" required> <br>
 
-            <label for="psw-repeat"><b>Password</b></label> <br />
-            <input
-                v-model="user.password"
-                placeholder="Enter Password"
-                name="psw"
-                required
-            />
-
           <label for="psw-repeat"><b>Password</b></label> <br>
           <input class="putin" v-model="user.password" placeholder="Enter Password" name="psw" required>
 
