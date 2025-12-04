@@ -28,11 +28,24 @@
             <p class="posted">test</p>
             <p class="posted">test</p>
         </div>
+<<<<<<< Updated upstream
     </div>
     <div>
         <footer>
             <textarea name="input" class="posting" placeholder="Add your post following the RULE"/>
             <button class="seb">&#x2b9a</button>
+=======
+        <footer>
+            <input
+                name="input"
+                class="posting"
+                placeholder="Add your post. Make sure it follows the only rule."
+            />
+            Here is a concise post crafted to be exactly two hundred characters
+            long, giving you a clear, simple message that is useful, readable,
+            and neatly contained within the limit Enjoy this extra note here!
+            <button icon="send-button.png" loading-auto @click="readInput" />
+>>>>>>> Stashed changes
         </footer>
     </div>
 </template>
