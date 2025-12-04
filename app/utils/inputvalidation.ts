@@ -1,10 +1,10 @@
 import type { userRes } from '../../types/natebooktypes';
 
 export function validateUserValues(username: string, password: string): number {
-    if (!username) {
+    if (!username || username.trim() == '') {
         return -1;
     }
-    if (!password) {
+    if (!password || password.trim() == '') {
         return -2;
     }
     return 0;
