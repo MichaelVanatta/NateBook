@@ -1,6 +1,4 @@
-<script setup lang="ts">
-
-</script>
+<script setup lang="ts"></script>
 
 <template>
     <main>
@@ -9,5 +7,3 @@
 </template>
 
 <style src="assets/css/app.css"/>
-<script setup lang="ts">
-</script>

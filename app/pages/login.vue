@@ -1,24 +1,25 @@
 <script setup lang="ts">
+import type { userRes } from '~~/types/natebooktypes';
+
     const user = reactive({
-        username: "",
-        password: ""
+        username: '',
+        password: '',
     })
     
-    async function checkAccount(username: string, password: string) {
+    async function checkAccount(username: string, password: string): Promise<userRes> {
         return await $fetch('api/checkaccount', {
             method: 'POST',
             body: {
                 username: username,
                 password: password
             }
-        })
+        });
     }
 
     async function handleSubmit(){
-        const res:any = await checkAccount(user.username, user.password);
-        console.log(res.user)
-        user.username = "";
-        user.password = "";
+        const res:userRes = await checkAccount(user.username, user.password);
+        console.log(res.result.rows[0])
+        user.username = '', user.password = '';
     }
 
 </script>
@@ -40,6 +41,8 @@
             <button type="button" class="cancelbtn">Cancel</button>
             <button type="submit" class="loginbtn" @click="handleSubmit">Login</button>
         </div>
+      <label for="colorPicker">Choose a color:</label>
+      <input type="color" id="colorPicker" value="#ff0000">
     </div>
 </main>
 </template>
