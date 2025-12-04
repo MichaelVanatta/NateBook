@@ -44,10 +44,9 @@
       </p>
     </div>
     <footer>
-      <!--<input name="input" class="posting" placeholder="Add your post following the RULE">
-        Here is a concise post crafted to be exactly two hundred characters long, giving you a clear, simple message that is useful, readable, and neatly contained within the limit Enjoy this extra note here!
-      </input>-->
-      <UButton icon="send-button.png" loading-auto @click="addPost" />
+      <textarea name="input" class="posting" placeholder="Add your post following the RULE"/>
+
+      <button class="seb">&#x2b9a</button>
     </footer>
   </div>
 </template>
