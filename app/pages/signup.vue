@@ -30,11 +30,11 @@
           <hr>
 
           <label for="name"><b>Username</b></label> <br>
-          <input v-model="user.username" placeholder="Enter UserName" name="name" required> <br>
+          <input class="putin" v-model="user.username" placeholder="Enter UserName" name="name" required> <br>
 
 
           <label for="psw-repeat"><b>Password</b></label> <br>
-          <input v-model="user.password" placeholder="Enter Password" name="psw" required>
+          <input class="putin" v-model="user.password" placeholder="Enter Password" name="psw" required>
 
           <div class="clearfix">
             <button type="button" class="cancelbtn">Cancel</button>
