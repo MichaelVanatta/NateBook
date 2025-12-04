@@ -41,6 +41,8 @@ import type { userRes } from '~~/types/natebooktypes';
             <button type="button" class="cancelbtn">Cancel</button>
             <button type="submit" class="loginbtn" @click="handleSubmit">Login</button>
         </div>
+      <label for="colorPicker">Choose a color:</label>
+      <input type="color" id="colorPicker" value="#ff0000">
     </div>
 </main>
 </template>

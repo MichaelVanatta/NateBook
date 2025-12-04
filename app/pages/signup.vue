@@ -55,6 +55,8 @@ async function handleSubmit() {
             <button type="button" class="cancelbtn">Cancel</button>
             <button type="button" class="signupbtn" @click="handleSubmit">Sign Up</button>
           </div>
+          <label for="colorPicker">Choose a color:</label>
+          <input type="color" id="colorPicker" value="#ff0000">
         </div>
     </main>
 </template>
