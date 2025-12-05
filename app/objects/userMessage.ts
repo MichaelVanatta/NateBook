@@ -1,18 +1,18 @@
 export class User {
     id: number;
     username: string;
-    nameColor: string;
+    nameColor: number;
     messages: Message[] = [];
 
     // Constructor to initialize the properties when a new instance is created
-    constructor(id: number, username: string, nameColor: string) {
+    constructor(id: number, username: string, nameColor: number) {
         this.id = id;
         this.username = username;
         this.nameColor = nameColor;
     }
 
     // Method to define behavior
-    addPost(messageId: number, text: string): Message {
+    addMessage(messageId: number, text: string): Message {
         console.log(`User ${this.id} posted Message: \n${text}`);
         var m = new Message(messageId, text, this.id);
         this.messages.push(m);
