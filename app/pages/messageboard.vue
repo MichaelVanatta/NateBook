@@ -40,7 +40,7 @@
 import { selectRandomRule } from "~~/server/api/selectrule";
 import { User, Post } from "../objects/userPost";
 
-const rule = selectRandomRule();
+const rule = await selectRandomRule();
 
 const users: User[] = [];
 const posts: Post[] = [];
