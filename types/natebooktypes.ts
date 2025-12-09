@@ -1,10 +1,10 @@
-import type { QueryResult, QueryResultBase } from "pg";
+import type { QueryResult } from "pg";
 
 export type user = {
-  id: number | null;
+  user_id: number | null;
   username: string;
   password: string;
-  nameColor: string | null;
+  name_color: string | null;
 };
 
 export type userRes = {

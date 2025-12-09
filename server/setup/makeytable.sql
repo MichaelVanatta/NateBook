@@ -10,6 +10,6 @@ CREATE TABLE IF NOT EXISTS users (
 
 CREATE TABLE IF NOT EXISTS posts (
     "post_id" SERIAL NOT NULL PRIMARY KEY,
-    "user_id" INT NOT NULL REFERENCES users(user_id),
+    "user_id" INT NOT NULL REFERENCES users("user_id"),
     "text" VARCHAR(200) NOT NULL
 );
