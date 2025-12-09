@@ -41,7 +41,6 @@ import { logIn, fetchCurrentUser } from '../utils/getcurrentuser';
 
 
         <label for="name"><b>UserName</b></label> <br>
-<<<<<<< HEAD
         <input class="putin" v-model="user.username" placeholder="Enter UserName" name="name" required> <br>
 
 
@@ -54,19 +53,6 @@ import { logIn, fetchCurrentUser } from '../utils/getcurrentuser';
         </div>
       <label for="colorPicker">Choose a color:</label>
       <input type="color" id="colorPicker" v-bind:value="user.name_color">
-=======
-        <input v-model="username" placeholder="Enter UserName" name="name" required> <br>
-
-
-        <label for="psw-repeat"><b> Password</b></label> <br>
-        <input v-model="password" placeholder="Enter Password" name="psw" required>
-
-        <div class="clearfix">
-            <button type="button" class="cancelbtn">Cancel</button>
-            <button type="submit" class="loginbtn" @click="checkAccount">login</button>
-            <!-- <button @click="displayInfo">Submit</button> -->
-        </div>
->>>>>>> d7dc93e (Fixed signup and login)
     </div>
 </main>
 </template>
