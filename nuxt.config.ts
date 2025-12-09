@@ -8,7 +8,7 @@ export default defineNuxtConfig({
     '@nuxt/test-utils',
     '@nuxt/fonts',
     '@nuxt/hints',
-    '@nuxthub/core'
+    '@nuxthub/core',
   ],
 
   runtimeConfig: {

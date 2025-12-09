@@ -43,7 +43,7 @@
     overflow-y: auto;
     position: relative;
     padding: 20px;
-    margin-bottom: 200px;
+    margin-bottom: 65px;
 
 }
 html{
@@ -66,6 +66,8 @@ html{
 }
 
 .posting{
+    resize: none;
+    field-sizing: content;
     position: fixed;
     bottom: 0;
     z-index: 100;
@@ -83,6 +85,10 @@ html{
     display: flex;
     align-items: center;
     border-radius: 15px;
+}
+.posting:focus{
+    width: 50%;
+    height: 200px;
 }
 html, main {
     height: 100%;
@@ -115,7 +121,6 @@ input[type=text], input[type=password] {
     border: 5px solid white;
     align-items: center;
     border-radius: 15px;
-
 }
 
 button{
@@ -127,4 +132,46 @@ button{
     margin: 10px;
     border: 3px solid black;
     border-radius: 15px;
+}
+.putin{
+    font-weight: 400;
+    background-image: url("../img/wood.jpg");
+    color: white;
+    font-size: 30px;
+    margin: 10px;
+    border: 3px solid black;
+    border-radius: 15px;
+}
+.seb{
+    position: fixed;
+    bottom: 0;
+    z-index: 100;
+    text-align: center;
+    background-position: center center;
+    margin: 15px 18%;
+    background-repeat: no-repeat;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 70px;
+    background-size: 100% 100%;
+    display: flex;
+    align-items: center;
+    border-radius: 15px;
+    color: #9A2BFF;
+}
+:root {
+    --user-chosen-color: #ff0000;
+}
+
+.element-to-style {
+    background-color: var(--user-chosen-color);
+    color: var(--user-chosen-color); /* Example usage */
+}
+#colorPickerCanvas {
+    border-radius: 50%;
+    cursor: crosshair;
+}
+
+#selectedColorSwatch {
+    margin-top: 10px;
 }
