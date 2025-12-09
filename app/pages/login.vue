@@ -1,4 +1,7 @@
 <script setup lang="ts">
+    //import { User } from '~/objects/userPost';
+    //import {LoggedInUser} from '~~/types/natebooktypes'
+
     const user = reactive({
         username: "",
         password: ""
@@ -16,10 +19,17 @@
 
     async function handleSubmit(){
         const res:any = await checkAccount(user.username, user.password);
-        console.log(res.user)
+        console.log(res.user.rows[0])
+        var temp = res.user.rows[0]
+        console.log(temp.userid)
         user.username = "";
         user.password = "";
     }
+
+    // export function getUser(): any{
+    //     console.log("GetUser")
+    //     return currentUser;
+    // }
 
 </script>
     

@@ -45,15 +45,15 @@
     </div>
     <footer>
       <input name="input" class="posting" placeholder="Add your post following the RULE">
-        Here is a concise post crafted to be exactly two hundred characters long, giving you a clear, simple message that is useful, readable, and neatly contained within the limit Enjoy this extra note here!
+        <!-- <button @click="readInput">Post</button> -->
       </input>
-      <UButton icon="send-button.png" loading-auto @click="readInput" />
+      
     </footer>
   </div>
 </template>
 <script setup lang="ts">
-  import { selectRandomRule } from '~~/server/api/selectrule';
-  const rule = selectRandomRule();
+  import { printRandomRule } from '~~/server/api/selectrule';
+  const rule = printRandomRule();
 
   import {User} from "../objects/userPost"
   import {Post} from "../objects/userPost"
@@ -62,10 +62,13 @@
   //read from database
 
   let text: string = "";
-  var u: User = new User(1, "pluh", "ffffff")
+
+  //import { loggedUser } from '~~/server/api/checkaccount.post';
+  //console.log(loggedUser.password);
+
   //get user ID
 
-  users.push(u)
+  //users.push(user.value)
 
   posts.forEach(element => {
     const newPost = document.createElement('p');
@@ -73,8 +76,8 @@
     newPost.textContent = name + element.text
   });
 
-  async function readInput() {
-    var post: Post = new Post(text, u.id)
-    posts.push(post)
-  }
+  // async function readInput() {
+  //   var post: Post = new Post(text, user.value)
+  //   posts.push(post)
+  // }
 </script>

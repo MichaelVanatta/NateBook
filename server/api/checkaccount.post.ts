@@ -1,5 +1,7 @@
-import { Client } from "pg"
+import { log } from "console";
+import { Client, QueryResult } from "pg"
 
+var resultUser
 export default defineEventHandler(async (event) => {
   const client = new Client({
     user: "postgres",
@@ -18,8 +20,20 @@ export default defineEventHandler(async (event) => {
 
   await client.end();
 
+  resultUser = result.rows[0];
+  loggedUser.userId = resultUser.userId;
+  loggedUser.username = resultUser.username;
+  loggedUser.password = resultUser.password;
+
   return {
     status: 'ok',
-    user: body
+    user: result
   };
 });
+
+import { reactive } from "vue";
+export const loggedUser = reactive({
+  userId: 0,
+  username: "",
+  password: ""
+})
