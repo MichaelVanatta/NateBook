@@ -40,6 +40,16 @@ async function handleSubmit() {
     user.id = 0, user.nameColor = 0;
 }
 
+        const currentUser: user = res.result.rows[0];
+
+        logIn(currentUser);
+        console.log("WORKY", fetchCurrentUser()); 
+
+        console.log(res.result.rows[0], (res.result.rows[0].name_color + 0x000000));
+        user.username = '';
+        user.password = '';
+        user.name_color = res.result.rows[0].name_color;
+    }
 </script>
 
 <template>
@@ -57,9 +67,10 @@ async function handleSubmit() {
                 <button type="button" class="cancelbtn">Cancel</button>
                 <button type="submit" class="loginbtn" @click="handleSubmit">Login</button>
             </div>
+            
             <label for="colorPicker">Choose a color:</label>
-            <input name="colorPicker" type="color" id="colorPicker" value="#ff0000">
+            <input type="color" id="colorPicker" v-bind:value="user.nameColor" />
         </div>
-    </main>
+</main>
 </template>
 <style src="assets/css/app.css" />

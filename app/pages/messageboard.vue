@@ -41,7 +41,7 @@ import { selectRandomRule } from "~~/server/api/selectrule";
 import { User, Message } from "../objects/userMessage";
 import type { user, userRes } from "~~/types/natebooktypes";
 
-const rule = selectRandomRule();
+const rule = await selectRandomRule();
 
 var users: User[] = [];
 const messages: Message[] = [];
