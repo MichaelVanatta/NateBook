@@ -32,6 +32,7 @@ import { logIn, fetchCurrentUser } from '../utils/getcurrentuser';
         user.password = '';
         user.name_color = res.result.rows[0].name_color;
     }
+
 </script>
     
 <template>
@@ -41,11 +42,19 @@ import { logIn, fetchCurrentUser } from '../utils/getcurrentuser';
 
 
         <label for="name"><b>UserName</b></label> <br>
+<<<<<<< HEAD
         <input class="putin" v-model="user.username" placeholder="Enter UserName" name="name" required> <br>
 
 
         <label for="psw-repeat"><b> Password</b></label> <br>
         <input class="putin" v-model="user.password" placeholder="Enter Password" name="psw" required>
+=======
+        <input v-model="user.username" placeholder="Enter UserName" name="name" required> <br>
+
+
+        <label for="psw-repeat"><b> Password</b></label> <br>
+        <input v-model="user.password" placeholder="Enter Password" name="psw" required>
+>>>>>>> 74a4c7f (Nother big change)
 
         <div class="clearfix">
             <button type="button" class="cancelbtn">Cancel</button>
