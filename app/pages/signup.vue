@@ -4,14 +4,16 @@ import { validateUserValues, validateUserNotExists } from '../utils/inputvalidat
 const user = reactive({
     username: '',
     password: '',
+    name_color: 0x00ff00,
 });
 
-async function createUser(username: string, password: string) {
+async function createUser(username: string, password: string, name_color: number) {
     return await $fetch("api/createuser", {
         method: "POST",
         body: {
             username: username,
             password: password,
+            name_color: name_color,
         },
     });
 }
@@ -20,9 +22,9 @@ async function handleSubmit() {
     if ((await validateUserNotExists(user.username, user.password)) == false) {
         switch(validateUserValues(user.username, user.password)) {
         case 0:
-            const res = await createUser(user.username, user.password);
+            const res = await createUser(user.username, user.password, user.name_color);
             console.log(res);
-            user.username = '', user.password = '';
+            user.username = '', user.password = '', user.name_color = 0xffffff;
             break;
         case -1:
             alert("Enter a valid username!");
@@ -57,7 +59,7 @@ async function handleSubmit() {
             <button type="button" class="signupbtn" @click="handleSubmit">Sign Up</button>
           </div>
           <label for="colorPicker">Choose a color:</label>
-          <input type="color" id="colorPicker" value="#ff0000">
+          <input type="color" id="colorPicker" v-bind:value="user.name_color">
         </div>
     </main>
 </template>

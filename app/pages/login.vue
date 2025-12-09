@@ -1,27 +1,37 @@
 <script setup lang="ts">
-import type { userRes } from '~~/types/natebooktypes';
+import type { user, userRes } from '~~/types/natebooktypes';
+import { logIn, fetchCurrentUser } from '../utils/getcurrentuser';
 
     const user = reactive({
         username: '',
         password: '',
+        name_color: 0x00ff00,
     })
     
-    async function checkAccount(username: string, password: string): Promise<userRes> {
+    async function checkAccount(username: string, password: string, name_color: number): Promise<userRes> {
         return await $fetch('api/checkaccount', {
             method: 'POST',
             body: {
                 username: username,
-                password: password
+                password: password,
+                name_color: name_color,
             }
         });
     }
 
     async function handleSubmit(){
-        const res:userRes = await checkAccount(user.username, user.password);
-        console.log(res.result.rows[0])
-        user.username = '', user.password = '';
-    }
+        const res:userRes = await checkAccount(user.username, user.password, user.name_color);
 
+        const currentUser: user = res.result.rows[0];
+
+        logIn(currentUser);
+        console.log("WORKY", fetchCurrentUser()); 
+
+        console.log(res.result.rows[0], (res.result.rows[0].name_color + 0x000000));
+        user.username = '';
+        user.password = '';
+        user.name_color = res.result.rows[0].name_color;
+    }
 </script>
     
 <template>
@@ -42,7 +52,7 @@ import type { userRes } from '~~/types/natebooktypes';
             <button type="submit" class="loginbtn" @click="handleSubmit">Login</button>
         </div>
       <label for="colorPicker">Choose a color:</label>
-      <input type="color" id="colorPicker" value="#ff0000">
+      <input type="color" id="colorPicker" v-bind:value="user.name_color">
     </div>
 </main>
 </template>

@@ -1,6 +1,6 @@
 import rules from '~~/server/api/rules.json';
 
-export function selectRandomRule(): any{
+export async function selectRandomRule(): Promise<any>{
     var rule: any;
     switch(Math.floor(Math.random() * (6) + 1)){
         case 1:
