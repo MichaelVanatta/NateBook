@@ -1,5 +1,6 @@
 DROP TABLE IF EXISTS users CASCADE;
-DROP TABLE IF EXISTS posts CASCADE;
+
+DROP TABLE IF EXISTS messages CASCADE;
 
 CREATE TABLE IF NOT EXISTS users (
     "user_id" SERIAL NOT NULL PRIMARY KEY,
@@ -8,8 +9,18 @@ CREATE TABLE IF NOT EXISTS users (
     "name_color" VARCHAR(32) NULL
 );
 
-CREATE TABLE IF NOT EXISTS posts (
+CREATE TABLE IF NOT EXISTS messages (
     "post_id" SERIAL NOT NULL PRIMARY KEY,
-    "user_id" INT NOT NULL REFERENCES users("user_id"),
-    "text" VARCHAR(200) NOT NULL
+    "text" VARCHAR(200) NOT NULL,
+    "user_id" INT
 );
+
+ALTER TABLE messages
+ADD CONSTRAINT fk_user FOREIGN KEY (user_id) REFERENCES users (user_id)
+
+
+select * from users --join messages on users.user_id=messages.user_id
+
+select * from messages
+
+delete * from users

@@ -15,3 +15,12 @@ export type userRes = {
   } | null,
   result: QueryResult<any>;
 };
+
+export type colorRes = {
+  method: "POST";
+  user: {
+    userId: number;
+    color: string;
+  }
+  result: QueryResult<any>;
+};
