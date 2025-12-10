@@ -1,6 +1,7 @@
 import { genericPost } from '../utils/genericpost';
 import { createClient } from "../utils/createclient";
 
+var resultUser
 export default defineEventHandler(async (event) => {
   const client = await createClient();
   const body = await readBody(event);
