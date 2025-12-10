@@ -12,89 +12,58 @@
         useful, readable, and neatly contained within the limit Enjoy
         this extra note here!
       </p>
-      <p class="posted">test</p>
-      <p class="posted">test</p>
-      <p class="posted">test</p>
-      <p class="posted">test</p>
-      <p class="posted">test</p>
-      <p class="posted">test</p>
-      <p class="posted">test</p>
-      <p class="posted">test</p>
-      <p class="posted">test</p>
-      <p class="posted">test</p>
-      <p class="posted">test</p>
-      <p class="posted">test</p>
-      <p class="posted">test</p>
-      <p class="posted">test</p>
-      <p class="posted">test</p>
+      <p>test</p>
+      <div v-for="(m) in messages">
+        <p class="posted">{{ m.text }}</p>
+      </div>
     </div>
   </div>
   <div>
     <footer>
-      <input name="input" class="posting" placeholder="Add your post following the RULE" />
-      <button class="seb" @click="addMessage">&#x2b9a</button>
+      <input name="input" class="posting" placeholder="Add your post following the RULE" v-model="post.text"/>
+      <button class="seb" @click="postMessage">&#x2b9a</button>
     </footer>
   </div>
 </template>
 <script setup lang="ts">
+import type { user, userRes, message, messageRes } from "~~/types/natebooktypes";
 import { selectRandomRule } from "~~/server/api/selectrule";
-import { User, Message } from "../objects/userMessage";
-import type { user, userRes } from "~~/types/natebooktypes";
 import { fetchCurrentUser } from "~/utils/getcurrentuser";
+
+const post = reactive({
+    text: '',
+});
 
 const rule = await selectRandomRule();
 
-var users: User[] = [];
-const messages: Message[] = [];
-//read from database
-let text: string = "";
-var u: User = await fetchCurrentUser();
-//get user ID
+var users: user[] = [];
+let messages: message[] = (await $fetch('/api/fetchallmessages')).result.rows;
+const currentUser: user = await fetchCurrentUser();
 
-async function createMessage(id: number, userId: number | null, text: string) {
+async function createMessage(user_id: number, text: string) {
   return await $fetch('api/createmessage', {
     method: 'POST',
     body: {
-      id: id,
-      userId: userId,
+      user_id: user_id,
       text: text
     }
-  })
+  });
+}
+
+async function postMessage() {
+  await createMessage(currentUser.user_id, post.text);
+  messages.push({
+    post_id: NaN,
+    user_id: currentUser.user_id,
+    text: post.text,
+   });
+   messages = (await $fetch('/api/fetchallmessages')).result.rows;
+   post.text = '';
 }
 
 async function getUsers(): Promise<user[]> {
-  const fetchedUsers: userRes = await $fetch('api/getallusers');
+  const fetchedUsers: any= await $fetch('api/getallusers');
 
   return fetchedUsers.result.rows;
-}
-
-var newUsers: user[] = [];
-getUsers().then(result => newUsers = result);
-
-newUsers.forEach(element => {
-  users.push(new User(element.user_id, element.username, element.name_color))
-})
-
-messages.forEach(element => {
-  const newMessage = document.createElement('div');
-  const name = document.createElement('h2');
-  const text = document.createElement('p');
-  name.textContent ?? users.find(x => x.id == element.userId)?.username
-  name.style = 'color="${users.find(x => x.id == element.userId)?.username?fd}"';
-  text.textContent ?? messages.find(x => x.userId == element.userId)?.text
-  newMessage.appendChild(name);
-  newMessage.appendChild(text);
-})
-
-async function addMessage() {
-  var message = u.addMessage(messages.length, text)
-  const res: any = await createMessage(message.id, message.userId, message.text);
-  console.log(res.message)
-
-  message.id = 0;
-  message.userId = 0;
-  message.text = "";
-
-  messages.push(message)
 }
 </script>

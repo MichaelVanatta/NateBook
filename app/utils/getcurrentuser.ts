@@ -11,6 +11,7 @@ export function logIn(user: user): void {
             }),
             maxAge: 86400,
             secure: true,
+            sameSite: true,
         });
         console.log(toRaw(useCookie("current user").value));
     }
