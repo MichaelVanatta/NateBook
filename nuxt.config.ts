@@ -13,9 +13,5 @@ export default defineNuxtConfig({
 
   runtimeConfig: {
     dbapi: process.env.Nuxt_POSTGRES_URL
-  },
-
-  plugins: [
-    '~/plugins/userPlugin'
-  ]
+  }
 })
