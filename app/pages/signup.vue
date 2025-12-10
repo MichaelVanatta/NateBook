@@ -38,6 +38,10 @@ async function handleSubmit() {
         alert("Username Taken");
     }
 }
+
+async function goLogin() {
+    navigateTo('/login')
+}
 </script>
 
 <template>
@@ -55,7 +59,7 @@ async function handleSubmit() {
           <input class="putin" v-model="user.password" placeholder="Enter Password" name="psw" required>
 
           <div class="clearfix">
-            <button type="button" class="cancelbtn">Cancel</button>
+            <button type="button" class="cancelbtn" @click="goLogin">Cancel</button>
             <button type="button" class="signupbtn" @click="handleSubmit">Sign Up</button>
           </div>
           <label for="colorPicker">Choose a color:</label>

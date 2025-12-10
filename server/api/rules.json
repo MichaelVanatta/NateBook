@@ -1,26 +1,7 @@
 {
-    "Rule1": {
-        "Commandment": "No specified letter",
-        "function": ""
-    }, 
-    "Rule2": {
-        "Commandment": "No spaces", 
-        "function": ""
-    }, 
-    "Rule3": {
-        "Commandment": "No capital", 
-        "function": ""
-    },  
-    "Rule4": {
-        "Commandment": "No lowercase", 
-        "function": ""
-    },  
-    "Rule5": {
-        "Commandment": "Limited to {} characters",
-        "function": ""
-    },   
-    "Rule6": {
-        "Commandment": "Must include {}",
-        "function": ""
-    }
+    "Rule1": "No ", 
+    "Rule2": "No spaces", 
+    "Rule3": "No capital",  
+    "Rule4": "No lowercase",  
+    "Rule5": "Character Limit: "
 }
