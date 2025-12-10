@@ -1,4 +1,4 @@
-import { genericPost } from '../utils/genericpost';
+import { genericGet } from '../utils/genericget';
 import { createClient } from "../utils/createclient";
 
 export default defineEventHandler(async () => {
