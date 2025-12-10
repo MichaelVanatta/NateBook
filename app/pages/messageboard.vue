@@ -40,6 +40,7 @@
 import { selectRandomRule } from "~~/server/api/selectrule";
 import { User, Message } from "../objects/userMessage";
 import type { user, userRes } from "~~/types/natebooktypes";
+import { fetchCurrentUser } from "~/utils/getcurrentuser";
 
 const rule = await selectRandomRule();
 
@@ -47,10 +48,10 @@ var users: User[] = [];
 const messages: Message[] = [];
 //read from database
 let text: string = "";
-var u: User = new User(1, "pluh", 0xffffff)
+var u: User = await fetchCurrentUser();
 //get user ID
 
-async function createMessage(id: number, userId: number, password: string) {
+async function createMessage(id: number, userId: number | null, text: string) {
   return await $fetch('api/createmessage', {
     method: 'POST',
     body: {
@@ -71,7 +72,7 @@ var newUsers: user[] = [];
 getUsers().then(result => newUsers = result);
 
 newUsers.forEach(element => {
-  users.push(new User(element.id, element.username, Number(element.nameColor)))
+  users.push(new User(element.user_id, element.username, element.name_color))
 })
 
 messages.forEach(element => {

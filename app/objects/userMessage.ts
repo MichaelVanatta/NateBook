@@ -1,11 +1,11 @@
 export class User {
-    id: number;
+    id: number | null;
     username: string;
-    nameColor: number;
+    nameColor: string | null;
     messages: Message[] = [];
 
     // Constructor to initialize the properties when a new instance is created
-    constructor(id: number, username: string, nameColor: number) {
+    constructor(id: number | null, username: string, nameColor: string | null) {
         this.id = id;
         this.username = username;
         this.nameColor = nameColor;
@@ -24,10 +24,10 @@ export class User {
 export class Message {
     id: number;
     text: string;
-    userId: number;
+    userId: number | null;
 
     // Constructor to initialize the properties when a new instance is created
-    constructor(id: number, text: string, userId: number) {
+    constructor(id: number, text: string, userId: number | null) {
         this.id = id;
         this.text = text;
         this.userId = userId;

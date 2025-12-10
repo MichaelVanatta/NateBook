@@ -1,12 +1,13 @@
 <script setup lang="ts">
 import type { userRes } from '~~/types/natebooktypes';
 import type { colorRes } from '~~/types/natebooktypes';
+import type { user } from '~~/types/natebooktypes';
 
 const user = reactive({
     id: 0,
     username: '',
     password: '',
-    nameColor: 0
+    nameColor: ''
 })
 
 async function checkAccount(id: number, username: string, password: string): Promise<userRes> {
@@ -35,21 +36,20 @@ async function handleSubmit() {
     console.log(ures.result.rows[0])
     user.id = 0, user.username = '', user.password = '';
 
-    const cres: colorRes = await addColor(user.id, user.nameColor.toString());
+    const cres: colorRes = await addColor(user.id, user.nameColor);
     console.log(cres.result.rows[0])
-    user.id = 0, user.nameColor = 0;
+    user.id = 0, user.nameColor = '';
+
+    const currentUser: user = ures.result.rows[0];
+
+    logIn(currentUser);
+    console.log("WORKY", fetchCurrentUser());
+
+    console.log(ures.result.rows[0], (ures.result.rows[0].name_color + 0x000000));
+    user.username = '';
+    user.password = '';
+    user.nameColor = ures.result.rows[0].name_color;
 }
-
-        const currentUser: user = res.result.rows[0];
-
-        logIn(currentUser);
-        console.log("WORKY", fetchCurrentUser()); 
-
-        console.log(res.result.rows[0], (res.result.rows[0].name_color + 0x000000));
-        user.username = '';
-        user.password = '';
-        user.name_color = res.result.rows[0].name_color;
-    }
 </script>
 
 <template>
@@ -67,10 +67,10 @@ async function handleSubmit() {
                 <button type="button" class="cancelbtn">Cancel</button>
                 <button type="submit" class="loginbtn" @click="handleSubmit">Login</button>
             </div>
-            
+
             <label for="colorPicker">Choose a color:</label>
             <input type="color" id="colorPicker" v-bind:value="user.nameColor" />
         </div>
-</main>
+    </main>
 </template>
 <style src="assets/css/app.css" />

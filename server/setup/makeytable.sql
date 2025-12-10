@@ -17,3 +17,10 @@ CREATE TABLE IF NOT EXISTS messages (
 
 ALTER TABLE messages
 ADD CONSTRAINT fk_user FOREIGN KEY (user_id) REFERENCES users (user_id)
+
+
+select * from users --join messages on users.user_id=messages.user_id
+
+select * from messages
+
+delete * from users
