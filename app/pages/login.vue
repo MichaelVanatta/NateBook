@@ -33,22 +33,32 @@ async function addColor(userId: number, nameColor: string): Promise<colorRes> {
 
 async function handleSubmit() {
     const ures: userRes = await checkAccount(user.id, user.username, user.password);
-    console.log(ures.result.rows[0])
-    user.id = 0, user.username = '', user.password = '';
+    console.log(typeof ures.result.rows[0])
+    if (ures.result.rows[0] != undefined) {
+        console.log(ures.result.rows[0])
+        user.id = 0, user.username = '', user.password = '';
 
-    const cres: colorRes = await addColor(user.id, user.nameColor);
-    console.log(cres.result.rows[0])
-    user.id = 0, user.nameColor = '';
+        const cres: colorRes = await addColor(user.id, user.nameColor);
+        console.log(cres.result.rows[0])
+        user.id = 0, user.nameColor = '';
 
-    const currentUser: user = ures.result.rows[0];
+        const currentUser: user = ures.result.rows[0];
 
-    logIn(currentUser);
-    console.log("WORKY", fetchCurrentUser());
+        logIn(currentUser);
+        console.log("WORKY", fetchCurrentUser());
 
-    console.log(ures.result.rows[0], (ures.result.rows[0].name_color + 0x000000));
-    user.username = '';
-    user.password = '';
-    user.nameColor = ures.result.rows[0].name_color;
+        console.log(ures.result.rows[0], (ures.result.rows[0].name_color + 0x000000));
+        user.username = '';
+        user.password = '';
+        user.nameColor = ures.result.rows[0].name_color;
+
+        console.log('Works here')
+        navigateTo('/messageboard')
+    }
+}
+
+async function goSignUp() {
+    navigateTo('/signup')
 }
 </script>
 
@@ -64,7 +74,7 @@ async function handleSubmit() {
             <input class="putin" v-model="user.password" placeholder="Enter Password" name="psw" required>
 
             <div class="clearfix">
-                <button type="button" class="cancelbtn">Cancel</button>
+                <button type="button" class="signupbtn" @click="goSignUp">Sign Up</button>
                 <button type="submit" class="loginbtn" @click="handleSubmit">Login</button>
             </div>
 
