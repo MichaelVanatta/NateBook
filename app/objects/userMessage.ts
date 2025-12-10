@@ -1,3 +1,5 @@
+// import { messageRes } from '../../types/natebooktypes';
+
 export class User {
     id: number | null;
     username: string;
@@ -12,13 +14,6 @@ export class User {
     }
 
     // Method to define behavior
-    addMessage(messageId: number, text: string): Message {
-        console.log(`User ${this.id} posted Message: \n${text}`);
-        var m = new Message(messageId, text, this.id);
-        this.messages.push(m);
-
-        return m;
-    }
 }
 
 export class Message {
@@ -32,4 +27,22 @@ export class Message {
         this.text = text;
         this.userId = userId;
     }
+}
+
+export async function addMessageToUser(user: User, messageId: number, text: string) {
+    console.log(`User ${user.id} posted Message: \n${text}`);
+        let m = new Message(messageId, text, user.id);
+        user.messages.push(m);
+
+        return m;
+}
+export async function populateMessages(user: User) {
+    const messageRes = await $fetch('/api/getmessagesbyuser', {
+        method: 'POST',
+        body: {
+            user_id: user.id
+        }
+    });
+
+    return messageRes
 }
