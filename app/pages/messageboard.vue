@@ -51,6 +51,7 @@ async function createMessage(user_id: number, text: string) {
 }
 
 async function postMessage() {
+  console.log(fetchCurrentUser());
   await createMessage(currentUser.user_id, post.text);
   messages.push({
     post_id: NaN,
@@ -59,6 +60,16 @@ async function postMessage() {
    });
    messages = (await $fetch('/api/fetchallmessages')).result.rows;
    post.text = '';
+}
+
+async function killUser(user: user) {
+  return $fetch('/api/deleteuser', {
+  method: "POST",
+  user: {
+    username: user.username,
+    password: user.password,
+  }
+  });
 }
 
 async function getUsers(): Promise<user[]> {

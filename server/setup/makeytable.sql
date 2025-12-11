@@ -1,5 +1,5 @@
+-- Drop Tables
 DROP TABLE IF EXISTS users CASCADE;
-
 DROP TABLE IF EXISTS messages CASCADE;
 DROP TABLE IF EXISTS posts CASCADE;
 
@@ -16,10 +16,7 @@ CREATE TABLE IF NOT EXISTS messages (
     "user_id" INT
 );
 
-ALTER TABLE messages
-ADD CONSTRAINT fk_user FOREIGN KEY (user_id) REFERENCES users (user_id)
-
-
+-- Check Tables
 select * from users --join messages on users.user_id=messages.user_id
 
 select * from messages
