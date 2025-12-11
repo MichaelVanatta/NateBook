@@ -23,25 +23,35 @@ async function checkAccount(user_id: number, username: string, password: string)
 async function handleSubmit() {
     const ures: any = await checkAccount(user.user_id, user.username, user.password);
     console.log(typeof ures.result.rows[0])
-    if (ures.result.rows[0] != undefined) {
-        console.log(ures.result.rows[0])
-        user.user_id = 0, user.username = '', user.password = '';
-        user.user_id = 0, user.name_color = '';
+    console.log(ures.result.rows[0])
+    user.user_id = 0, user.username = '', user.password = '';
+    user.user_id = 0, user.name_color = '';
 
-        const currentUser: user = ures.result.rows[0];
+    const currentUser: user = ures.result.rows[0];
 
-        logIn(currentUser);
-        console.log("WORKY", fetchCurrentUser());
 
-        console.log(ures.result.rows[0], (ures.result.rows[0].name_color + 0x000000));
-        user.username = '';
-        user.password = '';
-        user.name_color = ures.result.rows[0].name_color;
+    switch(validateUserValues(user.username, user.password)) {
+        case -1:
+            alert("No worky!");
+            break;
+        case -2: 
+            alert("No such account. Lock in maybe.");
+            break;
+        case 0:
+            logIn(currentUser);
+            console.log("WORKY", fetchCurrentUser());
 
-        console.log('Works here');
-        navigateTo('/messageboard');
+            console.log(ures.result.rows[0], (ures.result.rows[0].name_color + 0x000000));
+            user.username = '';
+            user.password = '';
+            user.name_color = ures.result.rows[0].name_color;
+
+            console.log('Works here');
+            navigateTo('/messageboard');
+            break;
     }
 }
+
 
 async function goSignUp() {
     navigateTo('/signup')
