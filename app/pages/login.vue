@@ -31,15 +31,14 @@ async function handleSubmit() {
         const currentUser: user = ures.result.rows[0];
 
         logIn(currentUser);
-        console.log("WORKY", fetchCurrentUser());
+        //console.log("WORKY", fetchCurrentUser());
 
-        console.log(ures.result.rows[0], (ures.result.rows[0].name_color + 0x000000));
+        //console.log(ures.result.rows[0], (ures.result.rows[0].name_color + 0x000000));
         user.username = '';
         user.password = '';
-        user.name_color = ures.result.rows[0].name_color;
+        //user.nameColor = ures.result.rows[0].name_color;
 
-        console.log('Works here');
-        navigateTo('/messageboard');
+        navigateTo('/messageboard')
     }
 }
 
