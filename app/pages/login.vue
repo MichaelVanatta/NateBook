@@ -1,54 +1,50 @@
 <script setup lang="ts">
 import type { userRes } from '~~/types/natebooktypes';
-import type { colorRes } from '~~/types/natebooktypes';
 import type { user } from '~~/types/natebooktypes';
 
 const user = reactive({
-    id: 0,
+    user_id: 0,
     username: '',
     password: '',
-    nameColor: ''
+    name_color: '',
 })
 
-async function checkAccount(id: number, username: string, password: string): Promise<userRes> {
+async function checkAccount(user_id: number, username: string, password: string) {
     return await $fetch('api/checkaccount', {
         method: 'POST',
         body: {
-            id: id,
+            user_id: user_id,
             username: username,
-            password: password
+            password: password,
         }
     });
 }
 
-async function addColor(userId: number, nameColor: string): Promise<colorRes> {
-    return await $fetch('api/setcolor', {
-        method: 'POST',
-        body: {
-            userId: userId,
-            nameColor: nameColor
-        }
-    })
+async function handleSubmit() {
+    const ures: any = await checkAccount(user.user_id, user.username, user.password);
+    console.log(typeof ures.result.rows[0])
+    if (ures.result.rows[0] != undefined) {
+        console.log(ures.result.rows[0])
+        user.user_id = 0, user.username = '', user.password = '';
+        user.user_id = 0, user.name_color = '';
+
+        const currentUser: user = ures.result.rows[0];
+
+        logIn(currentUser);
+        console.log("WORKY", fetchCurrentUser());
+
+        console.log(ures.result.rows[0], (ures.result.rows[0].name_color + 0x000000));
+        user.username = '';
+        user.password = '';
+        user.name_color = ures.result.rows[0].name_color;
+
+        console.log('Works here');
+        navigateTo('/messageboard');
+    }
 }
 
-async function handleSubmit() {
-    const ures: userRes = await checkAccount(user.id, user.username, user.password);
-    console.log(ures.result.rows[0])
-    user.id = 0, user.username = '', user.password = '';
-
-    const cres: colorRes = await addColor(user.id, user.nameColor);
-    console.log(cres.result.rows[0])
-    user.id = 0, user.nameColor = '';
-
-    const currentUser: user = ures.result.rows[0];
-
-    logIn(currentUser);
-    console.log("WORKY", fetchCurrentUser());
-
-    console.log(ures.result.rows[0], (ures.result.rows[0].name_color + 0x000000));
-    user.username = '';
-    user.password = '';
-    user.nameColor = ures.result.rows[0].name_color;
+async function goSignUp() {
+    navigateTo('/signup')
 }
 </script>
 
@@ -64,12 +60,16 @@ async function handleSubmit() {
             <input class="putin" v-model="user.password" placeholder="Enter Password" name="psw" required>
 
             <div class="clearfix">
-                <button type="button" class="cancelbtn">Cancel</button>
                 <button type="submit" class="loginbtn" @click="handleSubmit">Login</button>
             </div>
-
+            
             <label for="colorPicker">Choose a color:</label>
-            <input type="color" id="colorPicker" v-bind:value="user.nameColor" />
+            <input type="color" id="colorPicker" v-bind:value="user.name_color" />
+
+            <br/> <br/>
+            <div class="clearfix">
+                <button type="button" class="signupbtn" @click="goSignUp">Sign Up</button>
+            </div>
         </div>
     </main>
 </template>
