@@ -23,9 +23,9 @@ async function handleSubmit() {
         switch(validateUserValues(user.username, user.password)) {
         case 0:
             const res = await createUser(user.username, user.password, user.name_color);
-            console.log(res);
+            //console.log(res);
             user.username = '', user.password = '', user.name_color = 0xffffff;
-            navigateTo('/login');
+            navigateTo('/login')
             break;
         case -1:
             alert("Enter a valid username!");
