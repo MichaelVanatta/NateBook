@@ -23,4 +23,9 @@ select * from users --join messages on users.user_id=messages.user_id
 
 select * from messages
 
-delete * from users
+delete * from users;
+
+insert into users (username, "password", name_color)
+values('Thomas', 'Swigma', '0x00FF00');
+insert into messages ("text", user_id)
+values ('Hello and welcome to Freddy Fazbear''s Pizzeria', 1);
