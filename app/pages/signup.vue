@@ -25,6 +25,7 @@ async function handleSubmit() {
             const res = await createUser(user.username, user.password, user.name_color);
             console.log(res);
             user.username = '', user.password = '', user.name_color = 0xffffff;
+            navigateTo('/login');
             break;
         case -1:
             alert("Enter a valid username!");
