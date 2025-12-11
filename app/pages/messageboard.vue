@@ -7,12 +7,10 @@
     </header>
     <div>
       <p class="posted">
-        Here is a concise post crafted to be exactly two hundred
-        characters long, giving you a clear, simple message that is
-        useful, readable, and neatly contained within the limit Enjoy
-        this extra note here!
+        Here is a concise post crafted to be exactly two hundred characters long, giving you a clear, simple message
+        that is useful, readable, and neatly contained within the limit
+        Enjoy this extra note here!
       </p>
-      <p>test</p>
       <div v-for="(m) in messages">
         <p class="posted">{{ m.text }}</p>
       </div>
@@ -20,7 +18,7 @@
   </div>
   <div>
     <footer>
-      <input name="input" class="posting" placeholder="Add your post following the RULE" v-model="post.text"/>
+      <input name="input" class="posting" placeholder="Add your post following the RULE" v-model="post.text" />
       <button class="seb" @click="postMessage">&#x2b9a</button>
     </footer>
   </div>
@@ -32,12 +30,12 @@ import { enforceRule } from "~~/server/api/selectrule";
 import { fetchCurrentUser } from "~/utils/getcurrentuser";
 
 const post = reactive({
-    text: '',
+  text: '',
 });
 
 const rule = await selectRandomRule();
 
-var users: user[] = [];
+let users: user[] = (await $fetch('/api/getallusers')).result.rows;
 let messages: message[] = (await $fetch('/api/fetchallmessages')).result.rows;
 const currentUser: user = await fetchCurrentUser();
 
@@ -52,7 +50,7 @@ async function createMessage(user_id: number, text: string) {
 }
 
 async function postMessage() {
-  var res = await enforceRule(post.text,rule);
+  var res = await enforceRule(post.text, rule);
   if (res) {
     killUser();
     navigateTo('/login');
@@ -60,7 +58,7 @@ async function postMessage() {
   else {
     await createMessage(currentUser.user_id, post.text);
     messages.push({
-      post_id: NaN,
+      post_id: messages.length,
       user_id: currentUser.user_id,
       text: post.text,
     });
@@ -71,8 +69,8 @@ async function postMessage() {
 
 async function killUser() {
   return await $fetch('/api/deleteuser', {
-  method: "POST",
-  body: {
+    method: "POST",
+    body: {
       username: currentUser.username,
       password: currentUser.password,
     }
@@ -80,7 +78,7 @@ async function killUser() {
 }
 
 async function getUsers(): Promise<user[]> {
-  const fetchedUsers: any= await $fetch('api/getallusers');
+  const fetchedUsers: any = await $fetch('api/getallusers');
 
   return fetchedUsers.result.rows;
 }
