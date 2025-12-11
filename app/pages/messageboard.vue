@@ -54,7 +54,7 @@ async function createMessage(user_id: number, text: string) {
 async function postMessage() {
   var res = await enforceRule(post.text,rule);
   if (res) {
-    killUser(currentUser);
+    killUser();
     navigateTo('/login');
   }
   else {
@@ -69,13 +69,13 @@ async function postMessage() {
   }
 }
 
-async function killUser(user: user) {
-  return $fetch('/api/deleteuser', {
+async function killUser() {
+  return await $fetch('/api/deleteuser', {
   method: "POST",
-  user: {
-    username: user.username,
-    password: user.password,
-  }
+  body: {
+      username: currentUser.username,
+      password: currentUser.password,
+    }
   });
 }
 

@@ -7,7 +7,7 @@ export async function genericPost(
   query: string,
 ) {
   await client.connect();
-  console.log(body);
+  //console.log(body);
   const result = await client.query(query);
   await client.end();
   return {

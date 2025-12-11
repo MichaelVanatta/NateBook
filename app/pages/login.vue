@@ -9,6 +9,8 @@ const user = reactive({
     name_color: '',
 })
 
+resetUser();
+
 async function checkAccount(user_id: number, username: string, password: string) {
     return await $fetch('api/checkaccount', {
         method: 'POST',
@@ -29,27 +31,29 @@ async function handleSubmit() {
 
     const currentUser: user = ures.result.rows[0];
 
+    // switch(validateUserValues(user.username, user.password)) {
+    //     case -1:
+    //         alert("No worky!");
+    //         break;
+    //     case -2: 
+    //         alert("No such account. Lock in maybe.");
+    //         break;
+    //     case 0:
+            
+    //         break;
+    // }
 
-    switch(validateUserValues(user.username, user.password)) {
-        case -1:
-            alert("No worky!");
-            break;
-        case -2: 
-            alert("No such account. Lock in maybe.");
-            break;
-        case 0:
-            logIn(currentUser);
-            console.log("WORKY", fetchCurrentUser());
+    logIn(currentUser);
+    console.log("WORKY", fetchCurrentUser());
 
-            console.log(ures.result.rows[0], (ures.result.rows[0].name_color + 0x000000));
-            user.username = '';
-            user.password = '';
-            user.name_color = ures.result.rows[0].name_color;
+    console.log(ures.result.rows[0], (ures.result.rows[0].name_color + 0x000000));
+    user.username = '';
+    user.password = '';
+    user.name_color = ures.result.rows[0].name_color;
 
-            console.log('Works here');
-            navigateTo('/messageboard');
-            break;
-    }
+    console.log('Works here');
+    navigateTo('/messageboard');
+            
 }
 
 
