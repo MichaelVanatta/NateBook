@@ -1,10 +1,10 @@
 <template>
     <div>
         <nav class="nav-bar-container">
-            <NuxtLink class="nav-bar" to="/">Home</NuxtLink>
+            <!-- <NuxtLink class="nav-bar" to="/">Home</NuxtLink>
             <NuxtLink class="nav-bar" to="/login">Log in</NuxtLink>
             <NuxtLink class="nav-bar" to="/signup">Sign up</NuxtLink>
-            <NuxtLink class="nav-bar" to="/messageboard">Board</NuxtLink>
+            <NuxtLink class="nav-bar" to="/messageboard">Board</NuxtLink> -->
         </nav>
         <slot />
       <footer>
