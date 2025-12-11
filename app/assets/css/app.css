@@ -63,6 +63,7 @@ html{
     background-position: center center;
     overflow-y: auto;
     position: relative;
+    word-wrap: break-word;
 }
 
 .posting{
