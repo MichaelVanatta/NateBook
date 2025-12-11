@@ -1,4 +1,4 @@
-import type { userRes } from '../../types/natebooktypes';
+import type { user, userRes } from '../../types/natebooktypes';
 
 export function validateUserValues(username: string, password: string): number {
     if (!username || username.trim() == '') {
@@ -15,7 +15,7 @@ export async function validateUserNotExists(username: string, password: string):
         method: 'POST',
         body: {
             username: username,
-            password: password
+            password: password,
         }
     });
 

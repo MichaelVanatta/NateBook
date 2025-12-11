@@ -52,7 +52,8 @@ export async function enforceRule(text:string, rule:string): Promise<boolean>{
 }
 
 function rule1(text:string): boolean{
-    return text.includes(currentLetter);
+    console.log("Letter is : " + currentLetter);
+    return text.toLowerCase().includes(currentLetter);
 }
 
 function rule2(text:string): boolean{
@@ -60,11 +61,23 @@ function rule2(text:string): boolean{
 }
 
 function rule3(text:string): boolean{
-    return /A-Z/.test(text);
+    for (let i = 0; i < text.length; i++){
+        var char:string = text.charAt(i);
+        if (char === char.toUpperCase()){
+            return true;
+        }
+    }
+    return false;
 }
 
 function rule4(text:string): boolean{
-    return /a-z/.test(text);
+    for (let i = 0; i < text.length; i++){
+        var char:string = text.charAt(i);
+        if (char === char.toLowerCase()){
+            return true;
+        }
+    }
+    return false;
 }
 
 function rule5(text:string): boolean{

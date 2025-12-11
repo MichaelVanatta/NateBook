@@ -28,6 +28,7 @@
 <script setup lang="ts">
 import type { user, userRes, message, messageRes } from "~~/types/natebooktypes";
 import { selectRandomRule } from "~~/server/api/selectrule";
+import { enforceRule } from "~~/server/api/selectrule";
 import { fetchCurrentUser } from "~/utils/getcurrentuser";
 
 const post = reactive({
@@ -51,14 +52,31 @@ async function createMessage(user_id: number, text: string) {
 }
 
 async function postMessage() {
-  await createMessage(currentUser.user_id, post.text);
-  messages.push({
-    post_id: NaN,
-    user_id: currentUser.user_id,
-    text: post.text,
-   });
-   messages = (await $fetch('/api/fetchallmessages')).result.rows;
-   post.text = '';
+  var res = await enforceRule(post.text,rule);
+  if (res) {
+    killUser();
+    navigateTo('/login');
+  }
+  else {
+    await createMessage(currentUser.user_id, post.text);
+    messages.push({
+      post_id: NaN,
+      user_id: currentUser.user_id,
+      text: post.text,
+    });
+    messages = (await $fetch('/api/fetchallmessages')).result.rows;
+    post.text = '';
+  }
+}
+
+async function killUser() {
+  return await $fetch('/api/deleteuser', {
+  method: "POST",
+  body: {
+      username: currentUser.username,
+      password: currentUser.password,
+    }
+  });
 }
 
 async function getUsers(): Promise<user[]> {

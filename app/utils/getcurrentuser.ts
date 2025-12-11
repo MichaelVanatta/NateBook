@@ -20,3 +20,7 @@ export function fetchCurrentUser(): any {
     console.log(useCookie("current-user").value);
     return toRaw(useCookie("current-user").value);
 }
+
+export function resetUser(): any {
+    useCookie('current-user').value = null;
+}
